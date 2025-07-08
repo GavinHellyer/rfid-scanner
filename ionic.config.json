@@ -1,0 +1,8 @@
+{
+  "name": "RFID Scanner",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "ddff3b03"
+}
