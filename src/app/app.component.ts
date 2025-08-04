@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Lynx } from 'lynx';
 
 @Component({
@@ -8,6 +8,8 @@ import { Lynx } from 'lynx';
     standalone: false,
 })
 export class AppComponent {
+    @ViewChild('deviceIFrame', { static: true }) deviceIFrame: ElementRef;
+
     constructor() {
         this.viewScans();
     }
@@ -21,6 +23,7 @@ export class AppComponent {
 
         Lynx.addListener('onInventoryTag', (event) => {
             console.log('onInventoryTag:', event);
+            this.deviceIFrame.nativeElement.postMessage(event);
         });
 
         Lynx.addListener('onInventoryTagEnd', (event) => {
